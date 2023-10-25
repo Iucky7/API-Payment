@@ -12,8 +12,29 @@
 				{
 					"name": "LOGIN USER",
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"test\",\r\n    \"password\" : \"12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8089/api/v1/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8089",
+							"path": [
+								"api",
+								"v1",
+								"login"
+							]
+						}
 					},
 					"response": []
 				}
@@ -25,8 +46,24 @@
 				{
 					"name": "REGISTER NEW USER",
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"test\",\r\n    \"password\" : \"12345\"\r\n}"
+						},
+						"url": {
+							"raw": "localhost:8089/api/v1/register",
+							"host": [
+								"localhost"
+							],
+							"port": "8089",
+							"path": [
+								"api",
+								"v1",
+								"register"
+							]
+						}
 					},
 					"response": []
 				}
@@ -38,16 +75,69 @@
 				{
 					"name": "GET LIST MERCHANT",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJBcGlQYXltZW50IiwiZXhwIjoxNjk4MjUwNzM1LCJpYXQiOjE2OTgyNDcxMzUsInVzZXJuYW1lIjoidGVzdCIsIlJvbGUiOiIiLCJTZXJ2aWNlcyI6bnVsbH0.sbdoKkY9qkHs410tlKLz_wJS3vSFKpTodB7M4O0bjYw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "localhost:8089/api/v1/merchant",
+							"host": [
+								"localhost"
+							],
+							"port": "8089",
+							"path": [
+								"api",
+								"v1",
+								"merchant"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "CREATE MERCHANT",
 					"request": {
-						"method": "GET",
-						"header": []
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJBcGlQYXltZW50IiwiZXhwIjoxNjk4MjQ5MDg0LCJpYXQiOjE2OTgyNDU0ODQsInVzZXJuYW1lIjoidGVzdCIsIlJvbGUiOiIiLCJTZXJ2aWNlcyI6bnVsbH0.GZwNVlCcjuaaFTCLacyXdB3xtd33ZBUPqE5K1o-d0Tw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"Pizza Hut\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8089/api/v1/merchant",
+							"host": [
+								"localhost"
+							],
+							"port": "8089",
+							"path": [
+								"api",
+								"v1",
+								"merchant"
+							]
+						}
 					},
 					"response": []
 				}
@@ -59,8 +149,39 @@
 				{
 					"name": "CREATE PAYMENT",
 					"request": {
-						"method": "GET",
-						"header": []
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJBcGlQYXltZW50IiwiZXhwIjoxNjk4MjUwNzM1LCJpYXQiOjE2OTgyNDcxMzUsInVzZXJuYW1lIjoidGVzdCIsIlJvbGUiOiIiLCJTZXJ2aWNlcyI6bnVsbH0.sbdoKkY9qkHs410tlKLz_wJS3vSFKpTodB7M4O0bjYw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"merchantId\" : \"61850a18-1a8f-45a6-b769-1f4ede924349\",\r\n    \"bankAccount\" : 12345678910,\r\n    \"amount\" : 200000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8089/api/v1/payment",
+							"host": [
+								"localhost"
+							],
+							"port": "8089",
+							"path": [
+								"api",
+								"v1",
+								"payment"
+							]
+						}
 					},
 					"response": []
 				},
@@ -68,7 +189,19 @@
 					"name": "GET LIST HISTORY PAYMENT",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "localhost:8089/api/v1/payment",
+							"host": [
+								"localhost"
+							],
+							"port": "8089",
+							"path": [
+								"api",
+								"v1",
+								"payment"
+							]
+						}
 					},
 					"response": []
 				}
