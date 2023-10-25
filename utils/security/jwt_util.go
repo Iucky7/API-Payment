@@ -9,6 +9,8 @@ import (
 	"github.com/golang-jwt/jwt/v5"
 )
 
+var blacklist = make(map[string]bool)
+
 func CreateAccessToken(user model.UserCredential) (string,error){
 	cfg, _ := config.NewConfig()
 
@@ -44,10 +46,19 @@ func VerifyAccessToken(tokenString string) (jwt.MapClaims,error){
 		return nil,err
 	}
 	
+	if _, ok := blacklist[tokenString]; ok {
+		return nil, fmt.Errorf("Please Login Again")
+	}
+
 	claims, ok := token.Claims.(jwt.MapClaims)
 	if !ok || !token.Valid || claims["iss"] != cfg.ApplicationName{
 		return nil,fmt.Errorf("Invalid token MapClaims")
 	}
 	return claims,nil
 
+}
+
+func Logout(tokenString string) error {
+	blacklist[tokenString] = true
+	return nil
 }

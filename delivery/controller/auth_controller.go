@@ -34,6 +34,20 @@ func (a *AuthController) createHandler(c *gin.Context) {
 	})
 }
 
+func (a *AuthController) deleteHandler(c *gin.Context) {
+	tokenString := c.GetHeader("Authorization")
+	err := a.authUc.Logout(tokenString)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"Error": err.Error(),
+		})
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{
+		"message": "Successfully logged out",
+	})
+}
+
 func NewAuthController(r *gin.Engine,authUseCase usecase.AuthUseCase){
 	controller := AuthController{
 		router : r,
@@ -42,4 +56,5 @@ func NewAuthController(r *gin.Engine,authUseCase usecase.AuthUseCase){
 
 	rg := r.Group("/api/v1")
 	rg.POST("/login",controller.createHandler)
+	rg.POST("/logout",controller.deleteHandler)
 }
