@@ -206,6 +206,41 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "LOGOUT",
+			"item": [
+				{
+					"name": "LOGOUT",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "yJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJBcGlQYXltZW50IiwiZXhwIjoxNjk4MjU5MDgyLCJpYXQiOjE2OTgyNTU0ODIsInVzZXJuYW1lIjoidGVzdCIsIlJvbGUiOiIiLCJTZXJ2aWNlcyI6bnVsbH0.YMd2PB81j2fyoOLLo7YIe6mxDDG2fPmEa2ZQ96o0Hp8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8089/api/v1/logout",
+							"host": [
+								"localhost"
+							],
+							"port": "8089",
+							"path": [
+								"api",
+								"v1",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
